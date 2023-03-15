@@ -1,18 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="images/logo.svg" type="image/x-icon">
-    
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <title>Scientific Calculator</title>
 
     <link rel="stylesheet" href="styles.css">
 
     <script src="app.js" defer></script>
 </head>
-<body>
 
+<body>
+    <main class="container">
+        <div class="display-panel">
+            <input type="text" placeholder="0" autofocus />
+        </div>
+
+        <div class="row">
+            <button>DEG</button>
+            <button>F-E</button>
+        </div>
+
+        <div class="row">
+            <button class="mc">MC</button>
+            <button class="mr">MR</button>
+            <button>M+</button>
+            <button>M-</button>
+            <button>MS</button>
+        </div>
+
+        <div class="row dropdowns">
+            <div class="dropdown-wrapper">
+                <button class="dropdown"> <img src="images/tri.png" width="17px" height="15px"> Trigonometry <span
+                        class="drop-icon"> > </span></button>
+                <ul class="dropdown-menu">
+                    <li>sin</li>
+                    <li>cos</li>
+                    <li>tan</li>
+                </ul>
+            </div>
+
+            <div class="dropdown-wrapper">
+                <button class="dropdown"> <span>&#119943;</span> Function <span class="drop-icon"> > </span></button>
+                <ul class="dropdown-menu">
+                    <li>floor()</li>
+                    <li>ceil()</li>
+                    <li>abs()</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div class="row">
+                <button>2<sup>nd</sup></button>
+                <button>π</button>
+                <button>e</button>
+                <button class="bold">C</button>
+                <button class="backspace"><img src="images/backspace.jpg" alt="Backspace"></button>
+            </div>
+            <div class="row">
+                <button>x<sup>2</sup></button>
+                <button>1/x</button>
+                <button>|x|</button>
+                <button>exp</button>
+                <button>mod</button>
+            </div>
+            <div class="row">
+                <button><span> &Sqrt;</span><span style="font-size: 1rem;">x</span> </button>
+                <button>(</button>
+                <button>)</button>
+                <button>n!</button>
+                <button class="operator">÷</button>
+            </div>
+            <div class="row">
+                <button>x<sup>y</sup></button>
+                <button class="bold">7</button>
+                <button class="bold">8</button>
+                <button class="bold">9</button>
+                <button class="operator">×</button>
+            </div>
+            <div class="row">
+                <button>10 <sup>x</sup></button>
+                <button class="bold">4</button>
+                <button class="bold">5</button>
+                <button class="bold">6</button>
+                <button class="operator">-</button>
+            </div>
+            <div class="row">
+                <button>log</button>
+                <button class="bold">1</button>
+                <button class="bold">2</button>
+                <button class="bold">3</button>
+                <button class="operator">+</button>
+            </div>
+            <div class="row">
+                <button>ln</button>
+                <button class="bold p-m">+/-</button>
+                <button class="bold">0</button>
+                <button class="dot">.</button>
+                <button class="operator blue">=</button>
+            </div>
+        </div>
+    </main>
 </body>
+
 </html>
