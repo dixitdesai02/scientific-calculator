@@ -21,20 +21,20 @@
 <body>
     <main class="container">
         <div class="display-panel">
-            <input type="text" placeholder="0" autofocus />
+            <input type="text" placeholder="0" autofocus onkeypress="rtl(this)" />
         </div>
 
         <div class="row">
-            <button>DEG</button>
+            <button class="unit">DEG</button>
             <button>F-E</button>
         </div>
 
         <div class="row">
-            <button class="mc">MC</button>
-            <button class="mr">MR</button>
-            <button>M+</button>
-            <button>M-</button>
-            <button>MS</button>
+            <button class="memory mc" disabled>MC</button>
+            <button class="memory mr" disabled>MR</button>
+            <button class="memory m+">M+</button>
+            <button class="memory m-">M-</button>
+            <button class="memory ms">MS</button>
         </div>
 
         <div class="row dropdowns">
@@ -42,16 +42,11 @@
                 <button class="dropdown"> <img src="images/tri.png" width="17px" height="15px"> Trigonometry <span
                         class="drop-icon"> > </span></button>
                 <ul class="dropdown-menu">
-                    <div>
-                        <button>sin <sup>-1</sup> </button>
-                        <button>cos <sup>-1</sup></button>
-                        <button>tan <sup>-1</sup></button>
-                    </div>
-                    <div>
-                        <button>cosec <sup>-1</sup></button>
-                        <button>sec <sup>-1</sup></button>
-                        <button>cot <sup>-1</sup></button>
-                    </div>
+                   
+                    <button>sin<sup>-1</sup> </button>
+                    <button>cos<sup>-1</sup></button>
+                    <button>tan<sup>-1</sup></button>
+                
                 </ul>
             </div>
 
@@ -59,9 +54,9 @@
                 <button class="dropdown"> <span>&#119943;</span> Function <span class="drop-icon"> > </span></button>
                 <ul class="dropdown-menu">
                     <div>
+                        <button>round()</button>
                         <button>floor()</button>
                         <button>ceil()</button>
-                        <button>abs()</button>
                     </div>
                 </ul>
             </div>
@@ -69,7 +64,7 @@
 
         <div class="wrapper">
             <div class="row">
-                <button>2<sup>nd</sup></button>
+                <button id="second">2<sup>nd</sup></button>
                 <button>π</button>
                 <button>e</button>
                 <button class="bold">C</button>
@@ -83,7 +78,7 @@
                 <button>mod</button>
             </div>
             <div class="row">
-                <button>&Sqrt;x</button>
+                <button id="sqrt"><sup>2</sup>&Sqrt;x</button>
                 <button>(</button>
                 <button>)</button>
                 <button>n!</button>
@@ -97,7 +92,7 @@
                 <button class="operator">×</button>
             </div>
             <div class="row">
-                <button>10<sup>x</sup></button>
+                <button id="x">10<sup>x</sup></button>
                 <button class="bold">4</button>
                 <button class="bold">5</button>
                 <button class="bold">6</button>
@@ -111,7 +106,7 @@
                 <button class="operator">+</button>
             </div>
             <div class="row">
-                <button>ln</button>
+                <button id="ln">ln</button>
                 <button class="bold p-m">+/-</button>
                 <button class="bold">0</button>
                 <button class="dot">.</button>
