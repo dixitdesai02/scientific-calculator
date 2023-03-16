@@ -72,7 +72,8 @@ body.addEventListener("keypress", (e) => {
 });
 
 body.addEventListener("click", ()=> {
-    input.focus();
+    if (window.innerWidth >= 1024)
+        input.focus();
 })
 
 // Click Events 
@@ -256,7 +257,6 @@ const handleClick = (key) => {
                 var a = +localStorage.getItem("memory");
                 var b = +input.value;
                 var c = a+b;
-                console.log(c);
                 localStorage.setItem("memory", c);
                 input.value = c;
                 break;
@@ -288,7 +288,6 @@ const handleClick = (key) => {
 
 // Factorial Calculation
 const factorial = (num) => {
-    console.log(num, typeof num);
     num = num.slice(0, num.length - 1);
     num = +num;
     if (num === 0 || num === 1)
@@ -316,7 +315,6 @@ const validSymbol = (value) => {
 const evaluate = (expression) => {
     try {
         expression = formatExpression(expression);
-        console.log(expression);
         return eval(expression);
 
     } catch (error) {
