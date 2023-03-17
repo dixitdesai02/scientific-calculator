@@ -5,6 +5,7 @@
     --secondary: rgb(247, 247, 248);
     --number-grey: rgb(252, 252, 252);
     --blue: rgb(145, 193, 231);
+    --blue-dark: rgb(138, 198, 247);
     --button-active: rgb(221, 221, 221);
     --hover: rgb(233, 233, 233);;
 }
@@ -47,7 +48,7 @@ main {
 }
 
 input::placeholder {
-    color: #000;
+    color: rgb(68, 68, 68);
 }
 
 input::-webkit-outer-spin-button,
@@ -182,6 +183,9 @@ button .drop-icon {
     background-color: var(--blue) !important;
 }
 
+.blue:hover {
+    background-color: var(--blue-dark) !important;
+}
 
 button span {
     font-size: 1.3rem;

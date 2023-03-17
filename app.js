@@ -17,7 +17,7 @@ const keywords = ["(" , ")", "!", "."];
 const isNumber = (num) => {
     if (num.length > 1)
         return false;
-    return (num >= '0' && num <= '9');
+    return (num >= '0' && num <= '9') || num === "π" || num === "e";
 }
 
 const isOperator = (op) => {
@@ -61,7 +61,7 @@ body.addEventListener("keypress", (e) => {
     }
     else if (!(isNumber(e.key) || (isOperator(e.key)) || (isKeyword(e.key)))) {
        
-        alert("Please enter a valid number!")
+        input.value = "Value Error❗";
         let value = input.value;
         
         setTimeout(()=>{
@@ -111,7 +111,7 @@ const handleClick = (key) => {
 
             case "e":
                 if(input.value && isNumber(input.value[input.value.length - 1])){ 
-                    alert("e Can't be right after a number");
+                    input.value = "Syntax Error❗";
                     break;
                 }
                 input.value += "e";
@@ -119,7 +119,7 @@ const handleClick = (key) => {
 
             case "π":
                 if(input.value && isNumber(input.value[input.value.length - 1])){ 
-                    alert("Pi Can't be right after a number");
+                    input.value = "Syntax Error❗";
                     break;
                 }
                 input.value += "π";
@@ -144,7 +144,7 @@ const handleClick = (key) => {
 
             case "1/x":
                 if(input.value.length && isNumber(input.value[input.value.length - 1])){ 
-                    alert("Enter valid input!");
+                    input.value = "Syntax Error❗";
                     break;
                 }
                 input.value += "1/";
@@ -224,22 +224,24 @@ const handleClick = (key) => {
                 break;
 
             case "round()":
-                input.value += "round(";
+                input.value = Math.round(input.value);
                 break;
             
             case "ceil()":
-                input.value += "ceil(";
+                input.value = Math.ceil(input.value);
                 break; 
                 
             case "floor()":
-                input.value += "floor(";
+                input.value = Math.floor(input.value);
                 break; 
 
             case "MS":
-                localStorage.setItem("memory", eval(input.value));
-                mc.removeAttribute("disabled");
-                mr.removeAttribute("disabled");
-                ms.setAttribute("disabled", true);
+                if (input.value!=="") {
+                    localStorage.setItem("memory", eval(input.value));
+                    mc.removeAttribute("disabled");
+                    mr.removeAttribute("disabled");
+                    ms.setAttribute("disabled", true);
+                }
                 break;
 
             case "MC":
@@ -315,11 +317,12 @@ const validSymbol = (value) => {
 const evaluate = (expression) => {
     try {
         expression = formatExpression(expression);
-        return eval(expression);
+        console.log(expression);
+        const res = Math.round(eval(expression)*100000)/100000;
+        return res;
 
     } catch (error) {
-        alert("Please enter valid Expression!");
-        return expression;
+        return "Syntax Error❗";
     }
 }
 
@@ -378,17 +381,6 @@ const formatExpression = (expression) => {
         expression = splitedArr.join("Math.atan");
     }
 
-    // Round
-    splitedArr = expression.split("round");
-    expression = splitedArr.join("Math.round");
-
-    // Floor
-    splitedArr = expression.split("floor");
-    expression = splitedArr.join("Math.floor");
-
-    // Ceil
-    splitedArr = expression.split("ceil");
-    expression = splitedArr.join("Math.ceil");
 
     return expression;
 }
@@ -414,26 +406,31 @@ const calculateLog = (expression, isLog) => {
         if (isNumber(expression[i])) 
             substr += expression[i];
         else if (expression[i] === "(" || expression[i] === ")") {
-            isParenthesis =  true;
-            continue;
+            isParenthesis = true;
         }
         else
             break;
     }
     
-    console.log("substr" , substr);
+    let temp = substr;
+
+    if (substr.includes("π"))
+        substr = substr.replace("π", Math.PI);
+    if (substr.includes("e"))
+        substr = substr.replace("e", Math.E);
+    
 
     let res;
     if (isLog)
         res =  Math.log(substr) / Math.LN10;
     else 
-        res = Math.log(substr)
+        res = Math.log(substr);
 
-    
+
     if (!isParenthesis)
-        expression = expression.replace(`${expr}${substr}`, res);
+        expression = expression.replace(`${expr}${temp}`, res.toFixed(5));
     else 
-        expression = expression.replace(`${expr}(${substr})`, res);
+        expression = expression.replace(`${expr}(${temp})`, res.toFixed(5));
     
     return expression;
 
@@ -445,11 +442,17 @@ const unitConversion = (value) => {
 
     if (unitName === "DEG") {
         unit.innerText = "RAD";
-        return ((Number(value) * 180) / Math.PI).toFixed(2) + "°";
+        if (value !== "")
+            return ((Number(evaluate(value)) * 180) / Math.PI).toFixed(2) + "°";
+        else 
+            return "Value Error❗";
     }
 
     unit.innerText = "DEG";
-    return ((Number(value) * Math.PI) / 180).toFixed(2);
+    if (value !== "")
+        return ((Number(evaluate(value)) * Math.PI) / 180).toFixed(2);
+    else 
+        return "Value Error❗";
 }
 
 
