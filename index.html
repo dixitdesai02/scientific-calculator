@@ -1,18 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="images/logo.svg" type="image/x-icon">
-    
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <title>Scientific Calculator</title>
 
     <link rel="stylesheet" href="styles.css">
 
     <script src="app.js" defer></script>
 </head>
-<body>
 
+<body>
+    <main class="container">
+        <div class="display-panel">
+            <input type="text" placeholder="0" autofocus />
+        </div>
+
+        <div class="row">
+            <button class="unit">DEG</button>
+            <button>F-E</button>
+        </div>
+
+        <div class="row">
+            <button class="memory mc" disabled>MC</button>
+            <button class="memory mr" disabled>MR</button>
+            <button class="memory m+">M+</button>
+            <button class="memory m-">M-</button>
+            <button class="memory ms">MS</button>
+        </div>
+
+        <div class="row dropdowns">
+            <div class="dropdown-wrapper">
+                <button class="dropdown"> <img src="images/tri.png" width="17px" height="15px"> Trigonometry <span
+                        class="drop-icon"> > </span></button>
+                <ul class="dropdown-menu">
+                   
+                    <button>sin<sup>-1</sup> </button>
+                    <button>cos<sup>-1</sup></button>
+                    <button>tan<sup>-1</sup></button>
+                
+                </ul>
+            </div>
+
+            <div class="dropdown-wrapper">
+                <button class="dropdown"> <span>&#119943;</span> Function <span class="drop-icon"> > </span></button>
+                <ul class="dropdown-menu">
+                    <div>
+                        <button>round()</button>
+                        <button>floor()</button>
+                        <button>ceil()</button>
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div class="row">
+                <button id="second">2<sup>nd</sup></button>
+                <button>π</button>
+                <button>e</button>
+                <button class="bold">C</button>
+                <button class="backspace"><img src="images/backspace.jpg" alt="Backspace"></button>
+            </div>
+            <div class="row">
+                <button>x<sup>2</sup></button>
+                <button>1/x</button>
+                <button>|x|</button>
+                <button>exp</button>
+                <button>mod</button>
+            </div>
+            <div class="row">
+                <button id="sqrt"><sup>2</sup>&Sqrt;x</button>
+                <button>(</button>
+                <button>)</button>
+                <button>n!</button>
+                <button class="operator">÷</button>
+            </div>
+            <div class="row">
+                <button>x<sup>y</sup></button>
+                <button class="bold">7</button>
+                <button class="bold">8</button>
+                <button class="bold">9</button>
+                <button class="operator">×</button>
+            </div>
+            <div class="row">
+                <button id="x">10<sup>x</sup></button>
+                <button class="bold">4</button>
+                <button class="bold">5</button>
+                <button class="bold">6</button>
+                <button class="operator">-</button>
+            </div>
+            <div class="row">
+                <button>log</button>
+                <button class="bold">1</button>
+                <button class="bold">2</button>
+                <button class="bold">3</button>
+                <button class="operator">+</button>
+            </div>
+            <div class="row">
+                <button id="ln">ln</button>
+                <button class="bold p-m">+/-</button>
+                <button class="bold">0</button>
+                <button class="dot">.</button>
+                <button class="operator blue">=</button>
+            </div>
+        </div>
+    </main>
 </body>
+
 </html>
